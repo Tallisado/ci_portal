@@ -1,0 +1,65 @@
+<section ng-controller="HarnessesController">
+  <div class="page-header">
+    <h1>New Harness</h1>
+  </div>
+  <div class="col-md-12">
+    <form name="harnessForm" class="form-horizontal" ng-submit="create(harnessForm.$valid)" novalidate>
+      <fieldset>
+        <div class="form-group" show-errors>
+          <label for="vm_name">Title</label>
+          <input name="vm_name" type="text" ng-model="vm_name" id="vm_name" class="form-control" placeholder="VM Name" required>
+          <div ng-messages="harnessForm.title.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Harness vm name is required.</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="utrack_id">uTrack</label>
+          <input name="utrack_id" type="text" ng-model="utrack_id" id="utrack_id" class="form-control" placeholder="uTrack ID">
+        </div>
+        <div class="form-group">
+          <label for="branchdc">Data Connector</label>
+          <input name="branchdc" type="text" ng-model="branchdc" id="branchdc" class="form-control" placeholder="DC">
+        </div>
+        <div class="form-group">
+          <label for="branchdf">Content</label>
+          <input name="branchdf" type="text" ng-model="branchdf" id="branchdf" class="form-control" placeholder="DF">
+        </div>
+        <div class="form-group">
+          <label for="branchref">Content</label>
+          <input name="branchref" type="text" ng-model="branchref" id="branchref" class="form-control" placeholder="REF">
+        </div>
+        <div class="form-group">
+          <label for="brancheval">Content</label>
+          <input name="brancheval" type="text" ng-model="brancheval" id="brancheval" class="form-control" placeholder="EVAL">
+        </div>
+        <div class="form-group">
+          <label for="branchdpn">Content</label>
+          <input name="branchdpn" type="text" ng-model="branchdpn" id="branchdpn" class="form-control" placeholder="DPN">
+        </div>
+        <div class="form-group">
+          <label for="branchwebui">Content</label>
+          <input name="branchwebui" type="text" ng-model="branchwebui" id="branchwebui" class="form-control" placeholder="WEB">
+        </div>
+        <div class="btn-group" data-toggle="buttons" ng-init='harness_status=2'>
+          <label class="btn btn-success" ng-class="{'active':harness_status==1}" >
+            <input type="radio" ng-value=1 ng-model="harness_status"> Deployed <span class="glyphicon glyphicon-file"></span>
+          </label>
+          <label class="btn btn-success" ng-class="{'active':harness_status==2}" >
+            <input type="radio" ng-value=2 ng-model="harness_status"> Tested <span class="glyphicon glyphicon-adjust"></span>
+          </label>
+          <label class="btn btn-success" ng-class="{'active':harness_status==3}" >
+            <input type="radio" ng-value=3 ng-model="harness_status"> Ready <span class="glyphicon glyphicon-light"></span>
+          </label>
+        </div>
+        <br/><br/> debug:: Selected Item: <b>{{harness_status}}</b>
+
+        <div class="form-group">
+          <input type="submit" class="btn btn-default">
+        </div>
+        <div ng-show="error" class="text-danger">
+          <strong ng-bind="error"></strong>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>

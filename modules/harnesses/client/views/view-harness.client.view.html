@@ -1,0 +1,42 @@
+<section ng-controller="HarnessesController" ng-init="findOne()">
+  <div class="page-header">
+    <h1 ng-bind="harness.title"></h1>
+  </div>
+  <div class="pull-right" ng-show="authentication.user._id == harness.user._id">
+    <a class="btn btn-primary" ui-sref="harnesses.edit({harnessId: harness._id})">
+      <i class="glyphicon glyphicon-edit"></i>
+    </a>
+    <a class="btn btn-primary" ng-click="remove();">
+      <i class="glyphicon glyphicon-trash"></i>
+    </a>
+  </div>
+  <small>
+    <em class="text-muted">
+      Posted on
+      <span ng-bind="harness.created | date:'mediumDate'"></span>
+      by
+      <span ng-bind="harness.user.displayName"></span>
+    </em>
+    <p class="list-group-item-heading" ng-bind="harness.vm_name"></p>
+    <p class="list-group-item-text" ng-bind="harness.branchdc"></p>
+    <p class="list-group-item-text" ng-bind="harness.branchdf"></p>
+    <p class="list-group-item-text" ng-bind="harness.branchref"></p>
+    <p class="list-group-item-text" ng-bind="harness.brancheval"></p>
+    <p class="list-group-item-text" ng-bind="harness.branchdpn"></p>
+    <p class="list-group-item-text" ng-bind="harness.branchwebui"></p>
+
+    <div class="btn-group" data-toggle="buttons">
+      <label class="btn btn-success" ng-class="{'active':harness.harness_status==1}" >
+        <input type="radio" ng-value=1 ng-model="harness.harness_status"> Deployed <span class="glyphicon glyphicon-file"></span>
+      </label>
+      <label class="btn btn-success" ng-class="{'active':harness.harness_status==2}" ng-init="{'active':harness_status==2}">
+        <input type="radio" ng-value=2 ng-model="harness.harness_status"> Tested <span class="glyphicon glyphicon-adjust"></span>
+      </label>
+      <label class="btn btn-success" ng-class="{'active':harness.harness_status==3}" >
+        <input type="radio" ng-value=3 ng-model="harness.harness_status"> Ready <span class="glyphicon glyphicon-light"></span>
+      </label>
+    </div>
+    <br/><br/> debug:: Selected Item: <b>{{harness.harness_status}}</b>
+  </small>
+  <p class="lead" ng-bind="harness.content"></p>
+</section>
