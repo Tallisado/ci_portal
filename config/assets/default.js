@@ -21,6 +21,8 @@ module.exports = {
     },
     css: [
       'modules/*/client/css/*.css'
+      // 'public/modules/**/css/*.css',
+      // 'public/lib/fontawesome/css/font-awesome.min.css' ]
     ],
     less: [
       'modules/*/client/less/*.less'
