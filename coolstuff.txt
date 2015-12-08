@@ -1,0 +1,2 @@
+find . -exec rename 's|vms|releases|' {} +
+find . -exec rename 's|vm|release|' {} +
